@@ -9,7 +9,7 @@ function App() {
 
   const [movies, setMovies] = useState([]);
 
-  const handleSearch = async(searchTerm) => {
+  const handleSearch = async  (searchTerm) => {
     try {
       const results = await searchMovies(searchTerm);
       setMovies(results);
