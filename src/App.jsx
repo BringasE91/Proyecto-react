@@ -4,8 +4,10 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import MyMovies from './components/MyMovies/MyMovies';
 import FindMovies from './components/FindMovies/FindMovies';
+import Home from './components/Home/Home';
 import { AuthProvider } from './context/AuthContext';
 import {Routes, Route} from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -14,10 +16,10 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path='/' element={<h1>Home</h1>} />
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/my-movies' element={<MyMovies />} />
+        <Route path='/my-movies' element={<ProtectedRoute><MyMovies /></ProtectedRoute>} />
         <Route path='/find-movies' element={<FindMovies />} />
       </Routes>
     </div>
