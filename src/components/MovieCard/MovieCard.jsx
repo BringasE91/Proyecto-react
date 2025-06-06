@@ -19,7 +19,7 @@ function MovieCard({ movie }) {
                 </h2>
     
                 <p className='text-truncate'>
-                    Fecha de estreno: {movie.release_date}
+                    Año: {new Date(movie.release_date).getFullYear()}   
                 </p>
             </div>
         </div>

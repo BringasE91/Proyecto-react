@@ -1,44 +1,27 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Searchbar from './components/Searchbar/Searchbar';
-import MovieCard from './components/MovieCard/MovieCard';
-import {searchMovies} from './services/searchService';
-import { useState } from 'react';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import MyMovies from './components/MyMovies/MyMovies';
+import FindMovies from './components/FindMovies/FindMovies';
+import { AuthProvider } from './context/AuthContext';
+import {Routes, Route} from 'react-router-dom';
 
 function App() {
 
-  const [movies, setMovies] = useState([]);
-
-  const handleSearch = async  (searchTerm) => {
-    try {
-      const results = await searchMovies(searchTerm);
-      setMovies(results);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-      setMovies([]); 
-    }
-  
-  }
   return (
+  <AuthProvider>
     <div className="App">
       <Header/>
-      <div className='container d-flex gap-3 flex-column p-3'>
-        <Searchbar 
-        onSearch={handleSearch} />
-        <div className='row gx-3 gy-3'>
-          {movies
-          .filter(movie => movie.poster_path)
-          .map((movie) => (
-            <div className='col-6 col-md-4 col-lg-3' key={movie.id}> 
-              <MovieCard 
-              movie={movie} />  
-            </div>
-          ))}
-          {movies.length === 0 && <li>No results found</li>}
-        </div>
-      </div>
-      
+      <Routes>
+        <Route path='/' element={<h1>Home</h1>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/my-movies' element={<MyMovies />} />
+        <Route path='/find-movies' element={<FindMovies />} />
+      </Routes>
     </div>
+  </AuthProvider>
   );
 }
 

@@ -6,3 +6,4 @@ export async function searchMovies(searchTerm) {
   const data = await response.json();
   return data.results;
 }
+
