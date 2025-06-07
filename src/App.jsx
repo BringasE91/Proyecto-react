@@ -8,22 +8,26 @@ import Home from './components/Home/Home';
 import { AuthProvider } from './context/AuthContext';
 import {Routes, Route} from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Footer from './components/Footer/Footer';
+
 
 function App() {
-
   return (
-  <AuthProvider>
-    <div className="App">
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/my-movies' element={<ProtectedRoute><MyMovies /></ProtectedRoute>} />
-        <Route path='/find-movies' element={<FindMovies />} />
-      </Routes>
-    </div>
-  </AuthProvider>
+    <AuthProvider>
+      <div className="App d-flex flex-column min-vh-100">
+        <Header/>
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/my-movies' element={<ProtectedRoute><MyMovies /></ProtectedRoute>} />
+            <Route path='/find-movies' element={<FindMovies />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 
