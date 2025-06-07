@@ -25,7 +25,7 @@ function Register(){
             console.log("Registro exitoso:", data);
             alert("Registro exitoso. Por favor, verifica tu correo electrónico.");
             navigate("/login"); // Redirigir a la página de inicio de sesión
-            // Aquí podrías redirigir al usuario a otra página o realizar otras acciones
+            
         }
     }
 
